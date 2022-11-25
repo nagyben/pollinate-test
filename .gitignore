@@ -1,2 +1,5 @@
 __pycache__/
 poetry.lock
+.terragrunt*
+.terraform*
+.pytest_cache
