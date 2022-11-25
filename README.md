@@ -53,4 +53,14 @@ terragrunt apply -var region=[GOOGLE_CLOUD_REGION] -var api_image=[GOOGLE_CLOUD_
 
 # Design decisions
 
-I opted to use managed cloud infrastructure (i.e. serverless) to deploy because it is a lot simpler, I get high-availability by default from GCP (all resources are multi-AZ by default, and Firestore is set up to be multi-region)
+I opted to use managed cloud infrastructure (i.e. serverless) to deploy because: it is a lot simpler; I get high-availability by default from GCP (all resources are multi-AZ by default, and Firestore is set up to be multi-region); I get observability and logging out of the box with Stackdriver; I get autoscaling and load-balancing; security; HTTPS...
+
+I considered the option of deploying VMs but it doesn't make sense to have all that management and operability overhead for such a simple app
+
+I also considered deploying a Kubernetes cluster, but again this would be needless overhead for an app such as this. If we knew that the ecosystem was going to grow, and we will have additional services it would make sense to consider. But also this would have taken too much time
+
+# Things which I wanted to do but didn't have time to finish
+
+- Set up a fully automated CI/CD pipeline using Github Actions
+- More unit & integration testing (e.g. with devcontainers / testcontainers)
+- Code quality and autoformatting tools implementation in CI
